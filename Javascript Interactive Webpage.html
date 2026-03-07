@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Project</title>
+    <style>
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2bee1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+            color: #333;
+        }
+
+        .card {
+            background: rgb(250, 248, 249);
+            padding: 25px;
+            margin: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2 { color: #2c3e50; font-size: 1.2rem; margin-bottom: 20px; }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+            background-color: #3498db;
+            color: white;
+        }
+
+        input {
+            padding: 10px;
+            width: 60px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Javascript Interactive Webpage</h1>
+
+    <div class="card">
+        <h2>1. Change Button Color</h2>
+        <button id="colorBtn" onclick="changeColor()">Click to Change My Color!</button>
+    </div>
+
+    <div class="card">
+        <h2>2. Time-based Greeting</h2>
+        <button onclick="showGreeting()">Get Greeting</button>
+    </div>
+
+    <div class="card">
+        <h2>3. Simple Calculator</h2>
+        <input type="number" id="num1" placeholder="0"> + 
+        <input type="number" id="num2" placeholder="0">
+        <br><br>
+        <button onclick="calculateSum()">Add Numbers</button>
+        <div id="result">Result: 0</div>
+    </div>
+
+    <script>
+        
+        function changeColor() {
+            const btn = document.getElementById('colorBtn');
+            const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+            btn.style.backgroundColor = randomColor;
+        }
+
+        function showGreeting() {
+            const hour = new Date().getHours();
+            let message;
+
+            if (hour < 12) {
+                message = "Good Morning! ☀️";
+            } else if (hour < 18) {
+                message = "Good Afternoon! 🌤️";
+            } else {
+                message = "Good Evening! 🌙";
+            }
+
+            alert(message);
+        }
+
+        function calculateSum() {
+            const val1 = parseFloat(document.getElementById('num1').value) || 0;
+            const val2 = parseFloat(document.getElementById('num2').value) || 0;
+            const sum = val1 + val2;
+            
+            document.getElementById('result').innerText = "Result: " + sum;
+        }
+    </script>
+
+</body>
+</html>
